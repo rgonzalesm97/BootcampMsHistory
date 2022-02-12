@@ -13,8 +13,8 @@ public class History {
 
 	@Id
 	private String id;
-	private String type;
 	private String idProduct;
+	private String type;
 	private Double amount;
 	private Date date;
 }

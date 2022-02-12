@@ -24,13 +24,18 @@ public class HistoryController {
 	private final HistoryService historyService;
 
 	@GetMapping
-	public Flux<History> getHistorys() {
+	public Flux<History> getAllHistory() {
 		return historyService.findAll();
 	}
 	
 	@GetMapping("/{id}")
 	public Mono<History> getHistory(@PathVariable("id") String id) {
 		return historyService.findById(id);
+	}
+	
+	@GetMapping("/byProduct/{id}")
+	public Flux<History> getHistoryByIdProduct(@PathVariable("id") String idProduct) {
+		return historyService.findByIdProduct(idProduct);
 	}
 	
 	@PostMapping
