@@ -8,7 +8,9 @@ import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.reactive.function.client.WebClient;
 
+import com.bank.history.model.dao.Client;
 import com.bank.history.model.dao.History;
 import com.bank.history.service.HistoryService;
 
@@ -22,10 +24,21 @@ import reactor.core.publisher.Mono;
 public class HistoryController {
 	
 	private final HistoryService historyService;
+	
+	private final WebClient.Builder webClientBuilder = WebClient.builder();
+	
 
 	@GetMapping
-	public Flux<History> getAllHistory() {
-		return historyService.findAll();
+	public Flux<Client> getAllHistory() {
+		
+		Flux<Client> clients = webClientBuilder.build()
+						.get()
+						.uri("http://localhost:8090/client")
+						.retrieve()
+						.bodyToFlux(Client.class);
+		
+		return clients;
+		//return historyService.findAll();
 	}
 	
 	@GetMapping("/{id}")
