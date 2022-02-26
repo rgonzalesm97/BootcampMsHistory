@@ -11,4 +11,5 @@ public interface HistoryService {
 	public Mono<History> save(History history);
 	public void delete(String id);
 	public Flux<History> findByIdProduct(String idProduct);
+	public Flux<History> findAllByIdProductAndType(String idProduct, String type);
 }

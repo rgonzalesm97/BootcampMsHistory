@@ -41,4 +41,9 @@ public class HistoryServiceImpl implements HistoryService{
 		return historyRepo.findByIdProduct(idProduct);
 	}
 
+	@Override
+	public Flux<History> findAllByIdProductAndType(String idProduct, String type) {
+		return historyRepo.findAllByIdProductAndType(idProduct, type);
+	}
+
 }

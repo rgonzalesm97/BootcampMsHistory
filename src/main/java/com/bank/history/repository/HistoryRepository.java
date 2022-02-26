@@ -11,4 +11,5 @@ import reactor.core.publisher.Flux;
 @Repository
 public interface HistoryRepository extends ReactiveMongoRepository<History, String>{
 	public Flux<History> findByIdProduct(String idProduct);
+	public Flux<History> findAllByIdProductAndType(String idProduct, String type);
 }

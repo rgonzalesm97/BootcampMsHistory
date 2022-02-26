@@ -38,6 +38,12 @@ public class HistoryController {
 		return historyService.findByIdProduct(idProduct);
 	}
 	
+	@GetMapping("/byProductAndType/{idProduct}/{type}")
+	public Flux<History> getByIdProductAndType(@PathVariable("idProduct") String idProduct,
+											   @PathVariable("type") String type) {
+		return historyService.findAllByIdProductAndType(idProduct, type);
+	}
+	
 	@PostMapping
 	public Mono<History> saveHistory(@RequestBody History history){
 		return historyService.save(history);
