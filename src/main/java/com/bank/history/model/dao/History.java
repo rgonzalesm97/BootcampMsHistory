@@ -16,5 +16,6 @@ public class History {
 	private String idProduct;
 	private String type;
 	private Double amount;
+	private String idThirdPartyProduct;
 	private Date date;
 }
